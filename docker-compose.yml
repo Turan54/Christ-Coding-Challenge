@@ -1,0 +1,14 @@
+version: '3.4'
+
+services:
+  christ_db: 
+    container_name: christ-db
+    image: mcr.microsoft.com/mssql/server:2022-latest
+  christcodingchallenge:
+    container_name: christCode
+    image: ${DOCKER_REGISTRY-}christcodingchallenge
+    build:
+      context: .
+      dockerfile: Christ Coding Challenge/Dockerfile
+    ports:
+       - 8001:80
