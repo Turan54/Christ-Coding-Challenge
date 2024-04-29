@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddHttpClient();
-// Configure database context
+
 builder.Services.AddDbContext<ArticleDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServerDb")));
 builder.Services.AddCors(options =>
@@ -14,7 +14,7 @@ builder.Services.AddCors(options =>
         .AllowAnyMethod());
 });
 
-// Configure other services
+
 builder.Services.AddControllers().AddJsonOptions(options =>
 {
     options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
@@ -24,7 +24,7 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Middleware configuration
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
